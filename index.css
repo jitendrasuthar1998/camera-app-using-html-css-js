@@ -91,3 +91,39 @@ video{
 .timer{
     display: none;
 }
+
+.filter-cont{
+    position: absolute;
+    top:calc((100vh - 16rem)/2);
+    left:5rem;
+    height: 16rem;
+    width: 5rem;
+    background-color: aliceblue;    
+}
+
+.filter{
+    height: 4rem;
+    background-image: url("https://picsum.photos/seed/picsum/200/300");
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.orange{
+    background-color: rgba(255, 166, 0, 0.4);
+    background-blend-mode: color-burn;
+}
+
+.brown{
+    background-color: rgba(165, 42, 42, 0.4);
+    background-blend-mode: color-burn;
+}
+
+.pink{
+    background-color: rgba(255, 192, 203, 0.4);
+    background-blend-mode: color-burn;
+}
+
+.transparent{
+    background-color: transparent;
+}
