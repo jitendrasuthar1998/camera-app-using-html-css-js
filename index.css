@@ -22,6 +22,7 @@ video{
 .actions-cont{
     height:15rem;
     width:5rem;
+    z-index: 3;
     /* background-color: lightblue; */
     position: absolute;
     top:calc((100vh - 10rem)/2);
@@ -40,6 +41,7 @@ video{
     justify-content: center;
     align-items: center;
     border:5px solid white;
+    cursor: pointer;
 }
 
 .record-btn{
@@ -98,7 +100,8 @@ video{
     left:5rem;
     height: 16rem;
     width: 5rem;
-    background-color: aliceblue;    
+    /* background-color: aliceblue;  */
+    z-index: 2;   
 }
 
 .filter{
@@ -107,6 +110,7 @@ video{
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .orange{
@@ -126,4 +130,14 @@ video{
 
 .transparent{
     background-color: transparent;
+}
+
+.filter-layer{
+    position: absolute;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100vw;
+    /* background-color: rgba(240, 248, 255, 0.342); */
+    z-index: 1;
 }

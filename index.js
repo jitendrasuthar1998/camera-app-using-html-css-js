@@ -6,40 +6,41 @@ let captureBtn = document.querySelector(".capture-btn");
 let recordFlag = false;
 let recorder;
 let chunks = []; // media data in chunks
+let transparentColor = "transparent";
 
 let constraints = {
   video: true,
   audio: true,
 };
 
-// navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-//   video.srcObject = stream;
+navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+  video.srcObject = stream;
 
-//   recorder = new MediaRecorder(stream);
+  recorder = new MediaRecorder(stream);
 
-//   recorder.addEventListener("start", (e) => {
-//     chunks = [];
-//   });
+  recorder.addEventListener("start", (e) => {
+    chunks = [];
+  });
 
-//   recorder.addEventListener("dataavailable", (e) => {
-//     chunks.push(e.data);
-//   });
+  recorder.addEventListener("dataavailable", (e) => {
+    chunks.push(e.data);
+  });
 
-//   recorder.addEventListener("stop", (e) => {
-//     // converstion of media chunks data to video
-//     let blob = new Blob(chunks, { type: "video/mp4" });
+  recorder.addEventListener("stop", (e) => {
+    // converstion of media chunks data to video
+    let blob = new Blob(chunks, { type: "video/mp4" });
 
-//     let videoUrl = window.URL.createObjectURL(blob);
+    let videoUrl = window.URL.createObjectURL(blob);
 
-//     let a = document.createElement("a");
+    let a = document.createElement("a");
 
-//     a.href = videoUrl;
+    a.href = videoUrl;
 
-//     a.download = "stream.mp4";
+    a.download = "stream.mp4";
 
-//     a.click();
-//   });
-// });
+    a.click();
+  });
+});
 
 recordBtnCont.addEventListener("click", (e) => {
   if (!recorder) return;
@@ -110,6 +111,11 @@ captureBtnCont.addEventListener("click", (e)=>{
 
     tool.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+    //filtering
+
+    tool.fillStyle = transparentColor;
+    tool.fillRect(0,0,canvas.width,canvas.height )
+
     let imageURL = canvas.toDataURL();
 
     let a = document.createElement("a");
@@ -117,3 +123,20 @@ captureBtnCont.addEventListener("click", (e)=>{
     a.download = "image.jpg";
     a.click();
 })
+
+// filtering logic 
+
+let filterLayer = document.querySelector(".filter-layer")
+
+let allFilters = document.querySelectorAll(".filter");
+allFilters.forEach((item)=>{
+    item.addEventListener("click", (e)=>{
+       //get value
+
+        transparentColor =  getComputedStyle(item).getPropertyValue("background-color");
+        console.log("transparentColor is == ", transparentColor)
+
+        filterLayer.style.backgroundColor = transparentColor;
+    })
+})
+
