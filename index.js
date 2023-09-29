@@ -30,6 +30,8 @@ navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
     // converstion of media chunks data to video
     let blob = new Blob(chunks, { type: "video/mp4" });
 
+    //save video to indexDb when user stop recording
+
     if(db){
         let videoId = shortid();
         console.log('videoId is == ', videoId);
@@ -115,6 +117,9 @@ function stopTimer() {
 }
 
 captureBtnCont.addEventListener("click", (e)=>{
+
+    captureBtn.classList.add("scale-capture");
+
     let canvas = document.createElement("canvas");
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
@@ -134,6 +139,11 @@ captureBtnCont.addEventListener("click", (e)=>{
     // a.href = imageURL;
     // a.download = "image.jpg";
     // a.click();
+
+    // save image to indexDb when user clicks on image.
+    
+
+
     if(db){
         let imageId = shortid();
         console.log('image is == ', imageId);
@@ -145,7 +155,11 @@ captureBtnCont.addEventListener("click", (e)=>{
         }
         imageStore.add(imageEntry);
     }
-})
+
+    setTimeout(()=>{
+      captureBtn.classList.remove("scale-capture");
+    },500)
+  })
 
 // filtering logic 
 
