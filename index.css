@@ -1,5 +1,7 @@
 *{
     box-sizing: border-box;
+      margin:0;
+    padding: 0;
 }
 
 body{
@@ -9,8 +11,7 @@ body{
 
 .video-cont{
     height: 100vh;
-    width: 100vw;
-    border: 1px solid red;
+    width: 99vw;
     background-color: black;
 }
 
@@ -25,8 +26,8 @@ video{
     z-index: 3;
     /* background-color: lightblue; */
     position: absolute;
-    top:calc((100vh - 10rem)/2);
-    right:5rem;
+    top:30%;
+    right:3rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -96,8 +97,8 @@ video{
 
 .filter-cont{
     position: absolute;
-    top:calc((100vh - 16rem)/2);
-    left:5rem;
+    top:30%;
+    left:3rem;
     height: 16rem;
     width: 5rem;
     /* background-color: aliceblue;  */
@@ -147,10 +148,13 @@ video{
     z-index: 5;
 }
 
+#gallery-icon{
+    font-size:30px;
+}
+
 .gallery{
     position: absolute;
-    right: 5rem;
-    bottom:10rem;
-    font-size: 30px;
+    right: 4rem;
+    bottom:20%;
     cursor: pointer;
 }
